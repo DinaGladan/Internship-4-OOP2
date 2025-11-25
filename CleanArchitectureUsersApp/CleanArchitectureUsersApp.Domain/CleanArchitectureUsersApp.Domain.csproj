@@ -7,9 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Enumumerations\" />
-    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Abstractions\UnitOfWork\Companies\" />
+    <Folder Include="Abstractions\UnitOfWork\Users\" />
   </ItemGroup>
 
 </Project>

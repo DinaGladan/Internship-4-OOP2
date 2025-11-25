@@ -1,4 +1,6 @@
 ﻿using CleanArchitectureUsersApp.Domain.Abstractions.Common;
+using CleanArchitectureUsersApp.Domain.Abstractions.Repositories;
+using CleanArchitectureUsersApp.Domain.Abstractions.UnitOfWork;
 using CleanArchitectureUsersApp.Domain.Common.Model;
 using CleanArchitectureUsersApp.Domain.Common.Validation;
 using CleanArchitectureUsersApp.Domain.Common.Validation.ValidationItems;
@@ -48,16 +50,23 @@ namespace CleanArchitectureUsersApp.Domain.Entitis.Users
             return false;
         }
 
-        public async Task<Result<bool>> Create()
+        public async Task<Result<bool>> Create(IUserUnitOfWork userUnitOfWork)
         {
             var result_validation = await CreateOrUpdateValidation();
             if (result_validation.HasError)
-                return new Result<bool>(false, result_validation);
+                return new Result<bool>(false, result_validation); // vracamo mu result_validation da bi onda poslije u app sloju predali korisniku
+
+            await userUnitOfWork.Users.InsertAsync(this);
+            await userUnitOfWork.SaveChangesAsync();
+
             return new Result<bool>(true, result_validation);
         }
 
         public async Task<ResultValidation> CreateOrUpdateValidation()
          {
+
+            //stavili da je async u slucaju da imamo provjeru s nekakvim povezanim entitetima
+            //pa cemo imat await company repository.getById ili nesto slicno, pa tu provjeravamo je li postoji kompanija koja se ide dodat na user
             var validationResult = new ResultValidation();
             if (string.IsNullOrEmpty(Name))
                 validationResult.AddValidationItem(ValidationItems.User.NameRequired);
