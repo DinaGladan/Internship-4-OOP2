@@ -50,17 +50,17 @@ namespace CleanArchitectureUsersApp.Domain.Entitis.Users
             return false;
         }
 
-        public async Task<Result<bool>> Create(IUserUnitOfWork userUnitOfWork)
-        {
-            var result_validation = await CreateOrUpdateValidation();
-            if (result_validation.HasError)
-                return new Result<bool>(false, result_validation); // vracamo mu result_validation da bi onda poslije u app sloju predali korisniku
+        //public async Task<Result<bool>> Create(IUserUnitOfWork userUnitOfWork) //stavit ga u application? Necemo koristit unit of work ode??
+        //{
+        //    var result_validation = await CreateOrUpdateValidation();
+        //    if (result_validation.HasError)
+        //        return new Result<bool>(false, result_validation); // vracamo mu result_validation da bi onda poslije u app sloju predali korisniku
 
-            await userUnitOfWork.Users.InsertAsync(this);
-            await userUnitOfWork.SaveChangesAsync();
+        //    await userUnitOfWork.Users.InsertAsync(this);
+        //    await userUnitOfWork.SaveChangesAsync();
 
-            return new Result<bool>(true, result_validation);
-        }
+        //    return new Result<bool>(true, result_validation);
+        //}
 
         public async Task<ResultValidation> CreateOrUpdateValidation()
          {
