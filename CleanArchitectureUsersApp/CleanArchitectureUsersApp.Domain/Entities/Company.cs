@@ -11,17 +11,6 @@ namespace CleanArchitectureUsersApp.Domain.Entitis
         public const int CompanyNameMaxLength = 150;
         public string CompanyName { get; set; } //uniqe
 
-        public async Task<Result<bool>> Create(ICompanyUnitOfWork companyUnitOfWork)
-        {
-            var result_validation = await CreateOrUpdateValidation();
-            if (result_validation.HasError)
-                return new Result<bool>(false, result_validation);
-
-            await companyUnitOfWork.Companies.InsertAsync(this);
-            await companyUnitOfWork.SaveChangesAsync();
-
-            return new Result<bool>(true, result_validation);
-        }
         public async Task<ResultValidation> CreateOrUpdateValidation()
         {
             var validationResult = new ResultValidation();

@@ -24,10 +24,10 @@ namespace CleanArchitectureUsersApp.Domain.Common.Validation.ValidationItems
                 ValidationTy = ValidationTy.FormalValidation
             };
             
-            public static readonly ValidationItem SurnameRequired = new ValidationItem
+            public static readonly ValidationItem UsernameRequired = new ValidationItem
             {
                 Code = $"{CodePrefix}3",
-                Message = "Prezime je obavezno! ",
+                Message = "Username je obavezan! ",
                 ValidationSeverity = ValidationSeverity.Error,
                 ValidationTy = ValidationTy.FormalValidation
             };
@@ -114,6 +114,27 @@ namespace CleanArchitectureUsersApp.Domain.Common.Validation.ValidationItems
                 Message = $"Stranica ima veci broj znakova od dozvoljenih {Entitis.Users.User.WebsiteMaxLength}",
                 ValidationSeverity = ValidationSeverity.Error,
                 ValidationTy = ValidationTy.FormalValidation
+            };
+            public static readonly ValidationItem EmailUnique = new ValidationItem
+            {
+                Code = $"{CodePrefix}16",
+                Message = "Email treba bit unikatan.",
+                ValidationSeverity = ValidationSeverity.Error,
+                ValidationTy = ValidationTy.BusinessRule
+            };
+            public static readonly ValidationItem UsernameUnique = new ValidationItem
+            {
+                Code = $"{CodePrefix}17",
+                Message = "Username treba bit unikatan. ",
+                ValidationSeverity = ValidationSeverity.Error,
+                ValidationTy = ValidationTy.BusinessRule
+            };
+            public static readonly ValidationItem DistanceInvalid = new ValidationItem
+            {
+                Code = $"{CodePrefix}18",
+                Message = "Udaljenost izmedju dva usera treba bit veca od 3km. ",
+                ValidationSeverity = ValidationSeverity.Error,
+                ValidationTy = ValidationTy.BusinessRule
             };
         }
     }

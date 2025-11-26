@@ -15,7 +15,7 @@ namespace CleanArchitectureUsersApp.Domain.Entitis.Users
         public const int CityAddressMaxLength = 100;
         public const int WebsiteMaxLength = 100;
         public string Name { get; set; }
-        public string Surname { get; set; } //unikatan
+        public string Username { get; set; } //unikatan
         public string Email { get; set; }   //unikatan
         public string AddressStreet { get; set; }
         public string addressCity {  get; set; } 
@@ -50,18 +50,6 @@ namespace CleanArchitectureUsersApp.Domain.Entitis.Users
             return false;
         }
 
-        //public async Task<Result<bool>> Create(IUserUnitOfWork userUnitOfWork) //stavit ga u application? Necemo koristit unit of work ode??
-        //{
-        //    var result_validation = await CreateOrUpdateValidation();
-        //    if (result_validation.HasError)
-        //        return new Result<bool>(false, result_validation); // vracamo mu result_validation da bi onda poslije u app sloju predali korisniku
-
-        //    await userUnitOfWork.Users.InsertAsync(this);
-        //    await userUnitOfWork.SaveChangesAsync();
-
-        //    return new Result<bool>(true, result_validation);
-        //}
-
         public async Task<ResultValidation> CreateOrUpdateValidation()
          {
 
@@ -72,8 +60,8 @@ namespace CleanArchitectureUsersApp.Domain.Entitis.Users
                 validationResult.AddValidationItem(ValidationItems.User.NameRequired);
             if (Name?.Length > NameMaxLength)
                 validationResult.AddValidationItem(ValidationItems.User.NameMaxLength);
-            if (string.IsNullOrEmpty(Surname))
-                validationResult.AddValidationItem(ValidationItems.User.SurnameRequired);
+            if (string.IsNullOrEmpty(Username))
+                validationResult.AddValidationItem(ValidationItems.User.UsernameRequired);
             if (string.IsNullOrEmpty(Email))
                 validationResult.AddValidationItem(ValidationItems.User.EmailRequired);
             if (!IsValidEmail(Email))
