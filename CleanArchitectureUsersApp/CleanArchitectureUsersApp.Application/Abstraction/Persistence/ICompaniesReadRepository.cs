@@ -1,6 +1,10 @@
-﻿namespace CleanArchitectureUsersApp.Application.Abstraction.Persistence
+﻿using CleanArchitectureUsersApp.Application.DTOs.Responses;
+
+namespace CleanArchitectureUsersApp.Application.Abstraction.Persistence
 {
-    internal interface ICompaniesReadRepository
+    public interface ICompaniesReadRepository
     {
+        Task<IEnumerable<CompanyResponse>> GetAllAsync();
+        Task<CompanyResponse?> GetByIdAsync(int id);
     }
 }
