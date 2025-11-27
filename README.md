@@ -1,1 +1,5 @@
-# Internship-4-OOP2
+Implementacija backend sustav za upravljanje korisnicima koristeći Clean 
+Architecture. Sustav omogućava dohvat korisnika iz vanjskog API-ja, spremanje u 
+bazu, CRUD operacije nad korisnicima i kompanijama, validaciju poslovnih pravila te 
+cacheiranje vanjskog API-ja do kraja dana. Getovi se odrađuju koristeći Dapper, dok se za 
+sve ostalo koristi EF.
