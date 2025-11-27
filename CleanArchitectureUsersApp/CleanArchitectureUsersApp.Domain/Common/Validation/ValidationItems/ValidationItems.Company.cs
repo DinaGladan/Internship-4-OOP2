@@ -22,6 +22,13 @@ namespace CleanArchitectureUsersApp.Domain.Common.Validation.ValidationItems
                 ValidationSeverity = ValidationSeverity.Error,
                 ValidationTy = ValidationTy.FormalValidation
             };
+            public static readonly ValidationItem CompanyNameUnique = new ValidationItem
+            {
+                Code = $"{CodePrefix}2",
+                Message = $"Ime kompanije treba bit unikatno.",
+                ValidationSeverity = ValidationSeverity.Error,
+                ValidationTy = ValidationTy.FormalValidation
+            };
         }
     }
 }
