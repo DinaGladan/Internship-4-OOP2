@@ -136,6 +136,13 @@ namespace CleanArchitectureUsersApp.Domain.Common.Validation.ValidationItems
                 ValidationSeverity = ValidationSeverity.Error,
                 ValidationTy = ValidationTy.BusinessRule
             };
+            public static readonly ValidationItem UserInvalidById = new ValidationItem
+            {
+                Code = $"{CodePrefix}19",
+                Message = "Uneseni Korisnik ne postoji ",
+                ValidationSeverity = ValidationSeverity.Error,
+                ValidationTy = ValidationTy.BusinessRule
+            };
         }
     }
 }

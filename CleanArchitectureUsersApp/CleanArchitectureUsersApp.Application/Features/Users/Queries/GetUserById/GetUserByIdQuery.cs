@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CleanArchitectureUsersApp.Application.Features.Users.Queries.GetUserById
+﻿namespace CleanArchitectureUsersApp.Application.Features.Users.Queries.GetUserById
 {
-    internal class GetUserByIdQuery
+    public class GetUserByIdQuery
     {
+        public int Id { get;}
+        public GetUserByIdQuery(int id) {
+            Id = id;
+        }
     }
 }
