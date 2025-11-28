@@ -12,6 +12,9 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Configurations
 
             builder.HasKey(u => u.Id);
 
+            builder.Property(u => u.Id)
+                .HasColumnName("id");
+
             builder.Property(u => u.Name)
                 .IsRequired()
                 .HasMaxLength(User.NameMaxLength)
@@ -33,7 +36,7 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Configurations
             builder.Property(u => u.addressCity)
                    .IsRequired()
                    .HasMaxLength(User.CityAddressMaxLength)
-                   .HasColumnName("city");
+                   .HasColumnName("address_city");
 
             builder.Property(u => u.Website)
                    .HasMaxLength(User.WebsiteMaxLength)
@@ -45,16 +48,16 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Configurations
 
             builder.Property(u => u.IsActive)
                    .IsRequired()
-                   .HasColumnName("active");
+                   .HasColumnName("is_active");
 
             builder.OwnsOne(u => u.Location, location =>
             {
                 location.Property(l => l.geoLat)
-                        .HasColumnName("GeoLat")
+                        .HasColumnName("geo_lat")
                         .IsRequired();
 
                 location.Property(l => l.geoLng)
-                        .HasColumnName("GeoLng")
+                        .HasColumnName("geo_lng")
                         .IsRequired();
             });
 
