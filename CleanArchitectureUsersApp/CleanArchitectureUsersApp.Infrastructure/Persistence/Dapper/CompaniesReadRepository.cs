@@ -18,7 +18,7 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Dapper
         {
             const string sql = @"
                 SELECT 
-                    id,
+                    id AS Id,
                     company_name AS CompanyName
                 FROM companies
             ";
@@ -30,7 +30,7 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Dapper
         {
             const string sql = @"
                 SELECT 
-                    id,
+                    id AS Is,
                     company_name AS CompanyName
                 FROM companies
                 WHERE id = @Id

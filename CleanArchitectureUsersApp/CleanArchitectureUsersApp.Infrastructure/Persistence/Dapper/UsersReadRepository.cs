@@ -18,15 +18,15 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Dapper
         {
             const string sql = @"
                 SELECT 
-                    id,
-                    name,
-                    username,
-                    email,
+                    id AS Id,
+                    name AS Name,
+                    username AS Username,
+                    email AS Email,
                     address_street AS AddressStreet,
                     city AS AddressCity,
                     GeoLat,
                     GeoLng,
-                    website,
+                    website AS Website,
                     active AS IsActive
                 FROM users
             ";
@@ -38,15 +38,15 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Dapper
         {
             const string sql = @"
                 SELECT 
-                    id,
-                    name,
-                    username,
-                    email,
+                    id AS Id,
+                    name AS Name,
+                    username AS Username,
+                    email AS Email,
                     address_street AS AddressStreet,
                     city AS AddressCity,
                     GeoLat,
                     GeoLng,
-                    website,
+                    website AS Website,
                     active AS IsActive
                 FROM users
                 WHERE id = @Id
