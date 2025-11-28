@@ -13,7 +13,7 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Database
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CompaniesDb).Assembly);
 
-            modelBuilder.HasDefaultSchema("public2");
+            modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);
         }
     }

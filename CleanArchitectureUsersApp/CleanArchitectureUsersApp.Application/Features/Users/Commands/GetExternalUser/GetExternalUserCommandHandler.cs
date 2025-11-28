@@ -51,20 +51,32 @@ namespace CleanArchitectureUsersApp.Application.Features.Users.Commands.GetExter
             int importedUsers = 0;
             var validation = new ResultValidation();
             foreach(var extUser in externalUsers)
-            {
+            {   
+                string website = extUser.Website;
+                if (!string.IsNullOrWhiteSpace(website))
+                    website = $"https://{website}";
+
+                string address = extUser.AddressStreet;
+                if (string.IsNullOrWhiteSpace(address))
+                    address = "Street Address";
+
+                string city = extUser.AddressCity;
+                if (string.IsNullOrWhiteSpace(city))
+                    city = "City";
+
                 var user = new User
                 {
                     Name = extUser.Name,
                     Username = extUser.Username,
                     Email = extUser.Email,
-                    AddressStreet = extUser.AddressStreet,
-                    addressCity = extUser.AddressCity,
+                    AddressStreet = address,
+                    addressCity = city,
                     Location = new Location
                     {
                         geoLat = extUser.GeoLat,
                         geoLng = extUser.GeoLng,
                     },
-                    Website = extUser.Website,
+                    Website = website,
                     password = Guid.NewGuid().ToString(),
                     IsActive = true
                 };

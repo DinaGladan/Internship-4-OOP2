@@ -12,10 +12,13 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Configurations
 
             builder.HasKey(c => c.Id);
 
+            builder.Property(c => c.Id)
+                .HasColumnName("id");
+
             builder.Property(c => c.CompanyName)
                 .IsRequired()
                 .HasMaxLength(Company.CompanyNameMaxLength)
-                .HasColumnName("company_name");
+                .HasColumnName("name");
         }
     }
 }
