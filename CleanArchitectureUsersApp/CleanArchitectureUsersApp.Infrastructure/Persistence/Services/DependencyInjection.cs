@@ -12,6 +12,8 @@ using CleanArchitectureUsersApp.Infrastructure.Persistence.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CleanArchitectureUsersApp.Domain.Abstractions.Services;
+using CleanArchitectureUsersApp.Infrastructure.Services;
 
 namespace CleanArchitectureUsersApp.Infrastructure
 {
@@ -37,7 +39,7 @@ namespace CleanArchitectureUsersApp.Infrastructure
                 options.UseNpgsql(configuration.GetConnectionString("CompaniesDb")));
         }
 
-        private static void  AddRepositories(IServiceCollection services)
+        private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
@@ -54,6 +56,8 @@ namespace CleanArchitectureUsersApp.Infrastructure
         {
             services.AddScoped<IExternalService, ExternalService>();
             services.AddScoped<ICacheService, MemoryCacheService>();
+            services.AddScoped<IUserUniqueness, UserUniqueness>();
+            services.AddScoped<ICompanyUniqueness, CompanyUniqueness>();
             services.AddMemoryCache();
 
         }

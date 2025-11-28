@@ -1,9 +1,12 @@
 ﻿using CleanArchitectureUsersApp.Application.Abstraction.Persistence;
 using CleanArchitectureUsersApp.Application.DTOs.Responses;
+using CleanArchitectureUsersApp.Domain.Common.Model;
+using CleanArchitectureUsersApp.Domain.Common.Validation;
+using CleanArchitectureUsersApp.Domain.Common.Validation.ValidationItems;
 
 namespace CleanArchitectureUsersApp.Application.Features.Users.Queries.GetUserById
 {
-    internal class GetUserByIdQueryHandler
+    public class GetUserByIdQueryHandler
     {
         private readonly IUsersReadRepository _usersReadRepository;
 
@@ -12,9 +15,18 @@ namespace CleanArchitectureUsersApp.Application.Features.Users.Queries.GetUserBy
             _usersReadRepository = usersReadRepository;
         }
 
-        public async Task<UserResponse> Handle(GetUserByIdQuery querry)
+        public async Task<Result<UserResponse>> Handle(GetUserByIdQuery query)
         {
-            return await _usersReadRepository.GetByIdAsync(querry.Id);
+            var user = await _usersReadRepository.GetByIdAsync(query.Id);
+            var validation = new ResultValidation();
+
+            if (user == null)
+            {
+                validation.AddValidationItem(ValidationItems.User.UserInvalidById);
+                return new Result<UserResponse>(null!, validation);
+            }
+
+            return new Result<UserResponse>(user, validation);
         }
 
     }

@@ -4,7 +4,7 @@
     {
         public int WantedId { get;}
 
-        DeactiveUserCommand(int wantedId)
+        public DeactiveUserCommand(int wantedId)
         {
             WantedId = wantedId;
         }

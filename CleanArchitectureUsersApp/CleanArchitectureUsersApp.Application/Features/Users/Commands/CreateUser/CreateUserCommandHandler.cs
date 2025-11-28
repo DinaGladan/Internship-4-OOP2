@@ -8,7 +8,7 @@ using CleanArchitectureUsersApp.Domain.ValueObjects;
 
 namespace CleanArchitectureUsersApp.Application.Features.Users.Commands.CreateUser
 {
-    internal class CreateUserCommandHandler
+    public class CreateUserCommandHandler
     {
         private readonly IUserRepository _userRepository;
         private readonly IUserUniqueness _userUniqueness;

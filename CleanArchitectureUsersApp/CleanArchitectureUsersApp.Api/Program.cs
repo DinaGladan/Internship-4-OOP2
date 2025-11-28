@@ -11,7 +11,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplication();
 
-
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bookify API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API");
         c.RoutePrefix = "swagger";
     });
 }

@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using CleanArchitectureUsersApp.Application.Mapping;
+using CleanArchitectureUsersApp.Domain.Common.Model;
 
 namespace CleanArchitectureUsersApp.Api.Common
 {
     public static class ResponseExtension
     {
-        public static ActionResult ToActionResult<TValue>(this ApplicationResult<TValue> result, ControllerBase controller) where TValue : class
+        public static ActionResult ToActionResult<T>(this Result<T> result, ControllerBase controller)
         {
-            var response = new Response<TValue>(result);
-            if (result.HasError)
-                return controller.BadRequest(response);
+            if (result.ResultValidation.HasError)
+                return controller.BadRequest(result);
 
-            return controller.Ok(response);
+            return controller.Ok(result);
         }
     }
 }
