@@ -3,8 +3,8 @@
     public class Location
     {
         public const double EarthRadiusKm = 6371.0;
-        public decimal geoLat { get; set; }
-        public decimal geoLng { get; set; }
+        public double geoLat { get; set; }
+        public double geoLng { get; set; }
         public bool IsValidLat() => geoLat >= -90 && geoLat <= 90;
         public bool IsValidLng() => geoLng >= -180 && geoLng <= 180;
         public double Distance(Location other) 
