@@ -1,5 +1,7 @@
 ﻿using CleanArchitectureUsersApp.Application.Abstraction.Persistence;
 using CleanArchitectureUsersApp.Application.DTOs.Responses;
+using CleanArchitectureUsersApp.Domain.Common.Model;
+using CleanArchitectureUsersApp.Domain.Common.Validation;
 
 namespace CleanArchitectureUsersApp.Application.Features.Companies.Queries.GetCompanies
 {
@@ -12,9 +14,11 @@ namespace CleanArchitectureUsersApp.Application.Features.Companies.Queries.GetCo
             _companiesReadRepository = companiesReadRepository;
         }
 
-        public async Task<IEnumerable<CompanyResponse>> Handle()
+        public async Task<Result<IEnumerable<CompanyResponse>>> Handle()
         {
-            return await _companiesReadRepository.GetAllAsync();
+            var companies = await _companiesReadRepository.GetAllAsync();
+            var validation = new ResultValidation();
+            return new Result<IEnumerable<CompanyResponse>>(companies, validation);
         }
     }
 }
