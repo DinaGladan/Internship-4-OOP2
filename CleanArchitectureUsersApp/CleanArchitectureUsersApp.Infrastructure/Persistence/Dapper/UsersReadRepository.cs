@@ -23,11 +23,11 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Dapper
                     username AS Username,
                     email AS Email,
                     address_street AS AddressStreet,
-                    city AS AddressCity,
-                    GeoLat,
-                    GeoLng,
+                    address_city AS AddressCity,
+                    geo_lat AS GeoLat,
+                    geo_lng AS GeoLng,
                     website AS Website,
-                    active AS IsActive
+                    is_active AS IsActive
                 FROM users
             ";
 
@@ -43,11 +43,11 @@ namespace CleanArchitectureUsersApp.Infrastructure.Persistence.Dapper
                     username AS Username,
                     email AS Email,
                     address_street AS AddressStreet,
-                    city AS AddressCity,
-                    GeoLat,
-                    GeoLng,
+                    address_city AS AddressCity,
+                    geo_lat AS GeoLat,
+                    geo_lng AS GeoLng,
                     website AS Website,
-                    active AS IsActive
+                    is_active AS IsActive
                 FROM users
                 WHERE id = @Id
             ";
