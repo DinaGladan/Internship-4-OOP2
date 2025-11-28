@@ -49,11 +49,13 @@ namespace CleanArchitectureUsersApp.Infrastructure
             services.AddScoped<ICompaniesReadRepository, CompaniesReadRepository>();
 
         }
-            
+
         private static void AddServices(IServiceCollection services)
         {
             services.AddScoped<IExternalService, ExternalService>();
-            services.AddSingleton<ICacheService, MemoryCacheService>();
+            services.AddScoped<ICacheService, MemoryCacheService>();
+            services.AddMemoryCache();
+
         }
     }
 }

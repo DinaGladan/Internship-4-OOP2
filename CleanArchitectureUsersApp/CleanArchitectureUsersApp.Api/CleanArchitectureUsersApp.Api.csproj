@@ -7,4 +7,17 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArchitectureUsersApp.Application\CleanArchitectureUsersApp.Application.csproj" />
+    <ProjectReference Include="..\CleanArchitectureUsersApp.Infrastructure\CleanArchitectureUsersApp.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
